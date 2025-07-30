@@ -21,7 +21,7 @@ public class CollectionEntity {
     @OneToOne(
             mappedBy = "collection",
             fetch = FetchType.EAGER,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE}
     )
     @JsonBackReference
     private PatronEntity patron;
@@ -41,6 +41,10 @@ public class CollectionEntity {
     public CollectionEntity(PatronEntity patron, List<BookEntity> books) {
         this.patron = patron;
         this.books = books;
+    }
+
+    public CollectionEntity() {
+
     }
 
     public int getId() {

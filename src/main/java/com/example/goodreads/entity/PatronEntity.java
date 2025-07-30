@@ -20,7 +20,7 @@ public class PatronEntity {
 
     @OneToOne(
             fetch = FetchType.EAGER,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE}
     )
     @JsonManagedReference
     private CollectionEntity collection;
