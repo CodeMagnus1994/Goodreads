@@ -12,13 +12,21 @@ import org.springframework.stereotype.Service;
 public class PatronService {
 
     private PatronRepository patronRepository;
+    private CollectionRepository collectionRepository;
 
     @Autowired
-    public PatronService(PatronRepository patronRepository) {
+    public PatronService(PatronRepository patronRepository, CollectionRepository collectionRepository) {
         this.patronRepository = patronRepository;
+        this.collectionRepository = collectionRepository;
     }
 
     public PatronEntity createPatron(PatronEntity patronEntity) {
+
+        CollectionEntity collection = new CollectionEntity();
+
+        collectionRepository.save(collection);
+        patronEntity.setCollection(collection);
+
         return patronRepository.save(patronEntity);
     }
 

@@ -35,7 +35,7 @@ public class CollectionEntity {
             joinColumns = @JoinColumn(name="collection"),
             inverseJoinColumns = @JoinColumn(name="book")
     )
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties("collection")
     private List<BookEntity> books;
 
     public CollectionEntity(PatronEntity patron, List<BookEntity> books) {

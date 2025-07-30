@@ -29,7 +29,7 @@ public class BookEntity {
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             mappedBy = "books"
     )
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties("books")
     private List<CollectionEntity> collection;
 
     public BookEntity() {}

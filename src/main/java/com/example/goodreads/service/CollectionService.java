@@ -39,7 +39,15 @@ public class CollectionService {
         entireCollection.addAll(collection.getBooks());
 
         for(BookEntity book : collectionEntity.getBooks()) {
-            entireCollection.add(book);
+
+            BookEntity associatedBook = bookRepository.findById(book.getId())
+                            .orElseThrow(() -> new RuntimeException("Book Not found"));
+
+            associatedBook.setTitle(associatedBook.getTitle());
+            associatedBook.setAuthor(associatedBook.getAuthor());
+            associatedBook.setBookEnum(associatedBook.getBookEnum());
+
+            entireCollection.add(associatedBook);
         }
 
         collection.setBooks(entireCollection);
